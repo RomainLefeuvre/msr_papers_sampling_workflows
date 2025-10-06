@@ -1,8 +1,7 @@
-from sampling_workflow.WorkflowBuilder import WorkflowBuilder
-from sampling_workflow.element.Loader import Loader
+from sampling_mining_workflows_dsl.WorkflowBuilder import WorkflowBuilder
+from sampling_mining_workflows_dsl.element.Loader import Loader
 from datetime import datetime
 
-from sampling_workflow.metadata.Metadata import Metadata
 
 # ---- Metadata ----
 latest_commit_date = Metadata.of_date("latest_commit_date")

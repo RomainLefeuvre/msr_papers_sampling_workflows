@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "MSR_PAPER_SAMPLING_WORKFLOW"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 readme = "README.md"
 requires-python = ">=3.12"
@@ -12,12 +12,16 @@ authors = [
     { name = "Romain Lefeuvre", email = "romain.lefeuvre@inria.fr"},
     { name = "Maiwenn Le Gouaster", email = "maiwenn.le-goasteller@irisa.fr"}
 ]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
 dependencies = [
     "python-dateutil>=2.9.0",
-]
+    "sampling_mining_workflows_dsl@git+https://github.com/RomainLefeuvre/SamplingMiningWorflowDSL"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src"]
+packages = ["src/msr_papers_sampling_workflows"]
 
 [tool.ruff.lint]
 extend-select = [
