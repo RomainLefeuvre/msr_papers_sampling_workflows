@@ -1,8 +1,8 @@
 
 
-from sampling_workflow.element.Loader import Loader
-from sampling_workflow.metadata.Metadata import Metadata
-from sampling_workflow.WorkflowBuilder import WorkflowBuilder
+from sampling_mining_workflows_dsl.element.Loader import Loader
+from sampling_mining_workflows_dsl.metadata.Metadata import Metadata
+from sampling_mining_workflows_dsl.WorkflowBuilder import WorkflowBuilder
 
 url = Metadata.of_string("url")
 language = Metadata.of_string("language")

@@ -1,10 +1,10 @@
 # CrashJS: A NodeJS Benchmark for Automated Crash Reproduction
 # DOI : 10.1145/3643991.3644912
-from sampling_workflow.element.writer.WritterFactory import WritterFactory
+from sampling_mining_workflows_dsl.element.writer.WritterFactory import WritterFactory
 
-from sampling_workflow.element.loader.LoaderFactory import LoaderFactory
-from sampling_workflow.metadata.Metadata import Metadata
-from sampling_workflow.operator.OperatorFactory import OperatorFactory
+from sampling_mining_workflows_dsl.element.loader.LoaderFactory import LoaderFactory
+from sampling_mining_workflows_dsl.metadata.Metadata import Metadata
+from sampling_mining_workflows_dsl.operator.OperatorFactory import OperatorFactory
 
 # *Filter JavaScript as main language
 # *Sort by number of stars

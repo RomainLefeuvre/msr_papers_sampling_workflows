@@ -1,7 +1,7 @@
-from sampling_workflow.element.loader.LoaderFactory import LoaderFactory
-from sampling_workflow.element.writer.WriterFactory import WritterFactory
-from sampling_workflow.metadata.Metadata import Metadata
-from sampling_workflow.operator.OperatorFactory import OperatorFactory
+from sampling_mining_workflows_dsl.element.loader.LoaderFactory import LoaderFactory
+from sampling_mining_workflows_dsl.element.writer.WriterFactory import WritterFactory
+from sampling_mining_workflows_dsl.metadata.Metadata import Metadata
+from sampling_mining_workflows_dsl.operator.OperatorFactory import OperatorFactory
 
 # Fine-Grained Just-In-Time Defect Prediction at the Block Level in Infrastructure-as-Code (IaC)
 # DOI : 10.1145/3643991.3644934

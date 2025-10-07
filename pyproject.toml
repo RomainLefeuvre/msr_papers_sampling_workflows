@@ -3,7 +3,7 @@ requires = ["hatchling", "setuptools>=65.0", "wheel"]
 build-backend = "hatchling.build"
 
 [project]
-name = "MSR_PAPER_SAMPLING_WORKFLOW"
+name = "MSR_PAPER_sampling_mining_workflows_dsl"
 version = "0.2.0"
 description = ""
 readme = "README.md"
@@ -21,7 +21,7 @@ dependencies = [
     "sampling_mining_workflows_dsl@git+https://github.com/RomainLefeuvre/SamplingMiningWorflowDSL"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/msr_papers_sampling_workflows"]
+packages = ["src/msr_papers_sampling_mining_workflows_dsls"]
 
 [tool.ruff.lint]
 extend-select = [

@@ -1,9 +1,9 @@
 from pathlib import Path
 
-from paper_extension.element.writter.CsvWriter import CsvWriter
-from sampling_workflow.element.loader import JsonLoader
-from sampling_workflow.metadata.Metadata import Metadata
-from sampling_workflow.WorkflowBuilder import WorkflowBuilder
+from sampling_mining_workflows_dsl.element.writer.CsvWriter import CsvWriter
+from sampling_mining_workflows_dsl.element.loader import JsonLoader
+from sampling_mining_workflows_dsl.WorkflowBuilder import WorkflowBuilder
+from sampling_mining_workflows_dsl.metadata.Metadata import Metadata
 
 # GuiEvo: Automated Evolution of Mobile Application GUIs.
 # * Filter on F-Droid for apps with source code available on GitHub

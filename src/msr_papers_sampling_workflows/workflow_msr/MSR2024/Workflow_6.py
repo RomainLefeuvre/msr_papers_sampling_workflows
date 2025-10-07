@@ -1,8 +1,8 @@
 
-from sampling_workflow.element.loader import JsonLoader
-from sampling_workflow.element.writer.JsonWriter import JsonWriter
-from sampling_workflow.metadata.Metadata import Metadata
-from sampling_workflow.operator.OperatorFactory import OperatorFactory
+from sampling_mining_workflows_dsl.element.loader import JsonLoader
+from sampling_mining_workflows_dsl.element.writer.JsonWriter import JsonWriter
+from sampling_mining_workflows_dsl.metadata.Metadata import Metadata
+from sampling_mining_workflows_dsl.operator.OperatorFactory import OperatorFactory
 
 # P3: A Dataset of Partial Program Fixes
 # DOI : 10.1145/3643991.3644889

@@ -1,8 +1,8 @@
 
-from paper_extension.element.writter.CsvWriter import CsvWriter
-from sampling_workflow.element.Loader import Loader
-from sampling_workflow.metadata.Metadata import Metadata
-from sampling_workflow.WorkflowBuilder import WorkflowBuilder
+from sampling_mining_workflows_dsl.element.writer.CsvWriter import CsvWriter
+from sampling_mining_workflows_dsl.element.Loader import Loader
+from sampling_mining_workflows_dsl.metadata.Metadata import Metadata
+from sampling_mining_workflows_dsl.WorkflowBuilder import WorkflowBuilder
 
 # Characterising the Knowledge about Primitive Variables in Java Code Comments.
 
