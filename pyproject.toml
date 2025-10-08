@@ -7,21 +7,25 @@ name = "MSR_PAPER_sampling_mining_workflows_dsl"
 version = "0.2.0"
 description = ""
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 authors = [
     { name = "Romain Lefeuvre", email = "romain.lefeuvre@inria.fr"},
     { name = "Maiwenn Le Gouaster", email = "maiwenn.le-goasteller@irisa.fr"}
+]
+dependencies = [
+    "sampling-mining-workflows-dsl",
 ]
 
 [tool.hatch.metadata]
 allow-direct-references = true
 
 dependencies = [
-    "python-dateutil>=2.9.0",
-    "sampling_mining_workflows_dsl@git+https://github.com/RomainLefeuvre/SamplingMiningWorflowDSL"]
+    "python-dateutil>=2.9.0"]
+
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/msr_papers_sampling_mining_workflows_dsls"]
+
 
 [tool.ruff.lint]
 extend-select = [
@@ -53,3 +57,9 @@ ignore = [
     "E501",    # Line too long
     "TD003",   # Missing issue link on todo
 ]
+
+[tool.uv.sources]
+sampling-mining-workflows-dsl = { path = "../final_version/PythonWorkflowDSL",editable = true }
+
+
+
