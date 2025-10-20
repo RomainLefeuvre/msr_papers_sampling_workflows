@@ -58,7 +58,7 @@ workflow = (
     .filter_operator("not has_travis_ci")
     .filter_operator("has_activity")
     .add_metadata(Loader(url, is_toy, has_test))
-    .filter_operator("not is_toy and not has_test")
+    .filter_operator("not is_toy and has_test")
     .add_metadata(Loader(url, owner_confirm_no_ci))
     .random_selection_operator(cardinality=30, seed=42)
 )
