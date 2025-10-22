@@ -7,6 +7,7 @@ from sampling_mining_workflows_dsl.WorkflowBuilder import WorkflowBuilder
 # * filter project using one of the following language (C,
 # C++, C#, Java, JavaScript, PHP, Python, Ruby, Shell, and TypeScript.)
 # * systematic selection  100 most forked project
+# * purposive sampling
 # * partition by language
 # * systematic selection 10 project,  descending based on number of merged pull request
 
@@ -39,6 +40,8 @@ workflow = (
     .filter_operator(f"language in {LANGS!r}")
     # systematic selection: top 100 most forked (descending)
     .systematic_selection_operator(cardinality=100, metadata_name="forks", reverse=True)
+    # purposive sampling
+    .manual_sampling_operator()
     # partition by language, then select 10 most merged PRs per language
     .grouping_operator(
         *[
