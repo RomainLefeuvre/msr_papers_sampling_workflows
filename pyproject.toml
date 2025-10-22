@@ -14,6 +14,7 @@ authors = [
 ]
 dependencies = [
     "sampling-mining-workflows-dsl",
+    "requests>=2.32.5",
 ]
 
 [tool.hatch.metadata]
