@@ -19,8 +19,8 @@ def main():
     input_path = Path("ansible-galaxy.json")
     downloads_nb = Metadata.of_integer("downloads")
     scripts_nb = Metadata.of_integer("scripts_nb")
-    stars_nb = Metadata.of_integer("stars")
-    commits_nb = Metadata.of_integer("commits")
+    stars = Metadata.of_integer("stars")
+    commits = Metadata.of_integer("commits")
 
     url = Metadata.of_string("url")
 
@@ -30,14 +30,17 @@ def main():
     workflow = (
         WorkflowBuilder()
         .input(
-            Loader(input_path, url, scripts_nb, stars_nb, commits_nb)
+            Loader(input_path, url, downloads_nb, scripts_nb, stars, commits)
         )
-        .add_metadata(downloads_nb)
+        .add_metadata(Loader(url, cardinality, downloads_nb))
         .systematic_selection_operator(
             cardinality, downloads_nb, 1
         )  # Sort by downloads
+        .add_metadata(Loader(url, scripts_nb))
         .filter_operator("scripts_nb > 10")  # Filter repos with more than 10 scripts
+        .add_metadata(Loader(url, stars))
         .filter_operator("stars = 1000")  # Filter repos with more than 1000 stars
+        .add_metadata(Loader(url, commits))
         .filter_operator("commits = 300")  # Filter repos with more than 300 commits
         .manual_sampling_operator()  # Manual check if contains Ansible scripts
         # Include oci-ansible-collection dataset

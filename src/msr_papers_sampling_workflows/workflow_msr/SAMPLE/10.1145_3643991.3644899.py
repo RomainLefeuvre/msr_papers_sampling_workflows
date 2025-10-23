@@ -14,10 +14,10 @@ from sampling_mining_workflows_dsl.element.Loader import Loader
 # 6, add metadata "dependencies_extractable"
 # 7 filter out not dependencicies_extractble
 
-from sampling_workflow.WorkflowBuilder import WorkflowBuilder
-from sampling_workflow.element.Loader import Loader
-from sampling_workflow.element.CsvWriter import CsvWriter
-from sampling_workflow.Metadata import Metadata
+from sampling_mining_workflows_dsl.WorkflowBuilder import WorkflowBuilder
+from sampling_mining_workflows_dsl.element.Loader import Loader
+from sampling_mining_workflows_dsl.element import CsvWriter
+from sampling_mining_workflows_dsl import Metadata
 
 # ----------------------------------------------
 # Metadata declarations (always before the loader)
@@ -37,12 +37,13 @@ workflow = (
     .input(Loader("ecosyste.ms7", url, releases, latest_release_date))
 
     # 2. add metadata from GitHub (language)
-    .add_metadata(language)
+    .add_metadata(Loader(url, language))
 
     # 3. filter out repositories not on GitHub
     .filter_operator("language is not '' ")
 
     # 4. filter repositories with latest release between Nov 2019 and June 2023
+    .add_metadata(Loader(url, latest_release_date))
     .filter_operator("latest_release_date >= date(2019, 11, 1) and latest_release_date <= date(2023, 6, 30)")
 
     # 5. add metadata dependencies_extractable

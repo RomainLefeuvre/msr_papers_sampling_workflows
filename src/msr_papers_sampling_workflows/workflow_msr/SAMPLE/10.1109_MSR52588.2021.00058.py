@@ -48,20 +48,22 @@ def main():
             )
         )
         # Filter Java projects
+        .add_metadata(Loader(url, language))
         .filter_operator("language == 'Java'")
         # Filter project with at least one star
+        .add_metadata(Loader(url, stars))
         .filter_operator("stars > 0")
         # Add & filter: available on GitHub
-        .add_metadata(available_on_github)
+        .add_metadata(Loader(url, available_on_github))
         .filter_operator("available_on_github")
         # Add & filter: engineered project (via RepoReaper)
-        .add_metadata(engineered_project)
+        .add_metadata(Loader(url, engineered_project))
         .filter_operator("engineered_project")
         # Add & filter: must have a README
-        .add_metadata(have_readme)
+        .add_metadata(Loader(url, have_readme))
         .filter_operator("have_readme")
         # Add & filter: documentation must be in README
-        .add_metadata(documentation_in_readme)
+        .add_metadata(Loader(url, documentation_in_readme))
         .filter_operator("documentation_in_readme")
         # filter out project without java file
         .add_metadata(contain_java_file)

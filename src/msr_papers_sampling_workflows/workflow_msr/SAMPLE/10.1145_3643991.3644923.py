@@ -20,6 +20,7 @@ def main():
     for i in range(5):
         WorkflowBuilder()\
             .input(Loader("PGA dataset", url, language))\
+            .add_metadata(Loader(url, language))\
             .filter_operator("language == 'Java' or language == 'C#'")\
             .difference_with_external_set_operator(Loader("java-c# dataset", url))\
             .output(CsvWriter(f"result{i}.csv"))

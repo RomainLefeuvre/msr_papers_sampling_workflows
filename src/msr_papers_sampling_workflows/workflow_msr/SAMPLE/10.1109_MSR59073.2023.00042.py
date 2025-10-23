@@ -81,8 +81,10 @@ def main():
             )
         )
         # Filter project non-fork
+        .add_metadata(Loader(url, is_fork))
         .filter_operator("is_fork == False")
         # Filter project with more than X stars
+        .add_metadata(Loader(url, stars))
         .filter_operator("stars >= 1") 
         # Filter project with a commit before June 1, 2019
         .filter_operator(
@@ -104,13 +106,16 @@ def main():
             )
         )
         # * Filter project including package.json manifest at the root
+        .add_metadata(Loader(url, contains_package_json))
         .filter_operator("contains_package_json == True")
         # * Filter project using Reaper
         .add_metadata(Loader(pass_reaper))
         .filter_operator("pass_reaper == True")
         # * Filter project having at least a dependabot security update targeting npm or yarn
+        .add_metadata(Loader(url, number_of_security_update_dependabot))
         .filter_operator("number_of_security_update_dependabot > 0")
         # * Filter out projects that use multiple dependency management bots (Maven, RubyGem)
+        .add_metadata(Loader(url, use_multiple_dependency_management_bots))
         .filter_operator("use_multiple_dependency_management_bots == False")
     )
 

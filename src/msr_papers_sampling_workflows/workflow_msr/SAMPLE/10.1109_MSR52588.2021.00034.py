@@ -16,8 +16,10 @@ def main():
         # Start from Sourcegraph
         .input(Loader(url, presence_of_flaky_annotation, flaky_nb))
         # Keep projects that have flaky annotation
+        .add_metadata(Loader(url, presence_of_flaky_annotation))
         .filter_operator("presence_of_flaky_annotation")
         # Keep projects with more than 30 flaky annotations
+        .add_metadata(Loader(url, flaky_nb))
         .filter_operator("flaky_nb > 30")
         # Output final dataset
         .output(CsvWriter("sourcegraph_flaky.csv"))

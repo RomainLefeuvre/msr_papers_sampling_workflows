@@ -25,8 +25,11 @@ def main():
     workflow = (
         WorkflowBuilder()
         .input(CsvLoader(input_path, url, creation_date, stars, libraries))
+        .add_metadata(Loader(url, creation_date))
         .filter_operator("creation_date >2014")
+        .add_metadata(Loader(url, stars))
         .filter_operator("stars > 100")
+        .add_metadata(Loader(url, libraries))
         .filter_operator(
             "len(libraries.intersection(set(['Datetime', 'Arrow', 'Pendulum']))>0"
         )

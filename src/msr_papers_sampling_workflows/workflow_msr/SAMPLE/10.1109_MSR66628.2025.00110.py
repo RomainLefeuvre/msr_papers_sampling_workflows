@@ -22,4 +22,4 @@ def main():
                                  .set_output_set_id("random_output_set"),
                 OperatorBuilder().difference_with_operator("random_output_set")
             )\
-            .output(CsvWriter(f"result{i}.csv"))\
+            .output(CsvWriter(f"result{i}.csv"))

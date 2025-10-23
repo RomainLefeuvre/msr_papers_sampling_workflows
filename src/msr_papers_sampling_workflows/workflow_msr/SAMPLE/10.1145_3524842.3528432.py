@@ -24,6 +24,7 @@ def main():
     (
         WorkflowBuilder()
         .input(Loader(url, code_reviews))
+        .add_metadata(Loader(url, code_reviews))
         .filter_operator("codeReviews >= 10000")
         .output(CsvWriter("phabricator_out.csv"))
     )

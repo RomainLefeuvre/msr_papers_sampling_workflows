@@ -15,6 +15,7 @@ def main():
         # Start from WOC distinct repositories
         .input(Loader(url, contain_correct_Dockerfile))
         # Keep only repositories containing a correct Dockerfile
+        .add_metadata(Loader(url, contain_correct_Dockerfile))
         .filter_operator("contain_correct_Dockerfile")
         # Output the filtered repositories
         .output(CsvWriter("woc_repos_correct_dockerfile.csv"))

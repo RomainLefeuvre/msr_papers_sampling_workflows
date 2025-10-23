@@ -47,12 +47,16 @@ def main():
             )
         )
         # * Filter repo with more than 10 stars
+        .add_metadata(Loader(url, stars))
         .filter_operator("stars > 10")
         # * Filter repo with more than 12 forks
+        .add_metadata(Loader(url, forks))
         .filter_operator("forks > 12")
         # * Filter repo using C or C++
+        .add_metadata(Loader(url, language))
         .filter_operator("language in ['C', 'C++']")
         # * Filter repo that have wasm/webassembly/emscripten/web assembly as keyword
+        .add_metadata(Loader(url, keywords))
         .filter_operator(
             "any(kw in keywords for kw in ['wasm', 'webassembly', 'emscripten', 'web assembly'])"
         )

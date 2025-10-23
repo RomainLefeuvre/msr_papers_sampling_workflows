@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from sampling_mining_workflows_dsl.element.writer.CsvWriter import CsvWriter
-from sampling_mining_workflows_dsl.element.loader import JsonLoader
+from sampling_mining_workflows_dsl.element.Loader import Loader
 from sampling_mining_workflows_dsl.metadata.Metadata import Metadata
 from sampling_mining_workflows_dsl.WorkflowBuilder import WorkflowBuilder
 
@@ -33,13 +33,17 @@ def main():
     workflow = (
         WorkflowBuilder()
         .input(
-            JsonLoader(
+            Loader(
                 input_path, url, contributors_nb, stars, is_dev_active_in_6_months
             )
         )
+        .add_metadata(Loader(url, number_of_prompts_after_filtering))
         .filter_operator("number_of_prompts_after_filtering > 0")
+        .add_metadata(Loader(url, contributors_nb))
         .filter_operator("contributors_nb >= 10")
+        .add_metadata(Loader(url, stars))
         .filter_operator("stars >= 50")
+        .add_metadata(Loader(url, is_dev_active_in_6_months))
         .filter_operator("is_dev_active_in_6_months == True")
         .output(CsvWriter("out.csv"))
     )

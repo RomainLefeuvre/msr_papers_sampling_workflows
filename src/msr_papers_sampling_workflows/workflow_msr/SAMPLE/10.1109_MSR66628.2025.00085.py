@@ -28,6 +28,7 @@ def main():
     workflow1 = (
         WorkflowBuilder()
         .input(JsonLoader(input_path, url, topic))
+        .add_metadata(Loader(url, topic))
         .filter_operator("topic.contains('VST')")
         # Add a filter/operator to remove duplicates ?
         .manual_sampling_operator()
@@ -40,6 +41,7 @@ def main():
     workflow2 = (
         WorkflowBuilder()
         .input(JsonLoader(input_path, url, has_VST_plugin))
+        .add_metadata(Loader(url, has_VST_plugin))
         .filter_operator("not has_VST_plugin")
         .random_selection_operator(
             299

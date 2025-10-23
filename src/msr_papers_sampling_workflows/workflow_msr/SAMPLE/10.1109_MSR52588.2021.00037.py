@@ -29,13 +29,19 @@ def main():
             )
         )
         # Keep projects with JS security PRs created by Dependabot
+        .add_metadata(Loader(url, have_pr_js_security_created_by_dependabot))
         .filter_operator("have_pr_js_security_created_by_dependabot")
         # Keep only JavaScript projects
+        .add_metadata(Loader(url, language))
         .filter_operator("language == 'JavaScript'")
         # Keep projects with more than X stars
+        .add_metadata(Loader(url, stars))
         .filter_operator("stars > X")
+        # filter project non-forked
+        .add_metadata(Loader(url, is_fork))
         .filter_operator("not isFork")
         # Keep projects with more than 20 commits
+        .add_metadata(Loader(url, commits))
         .filter_operator("commits > 20")
         # Output final dataset
         .output(CsvWriter("10.1109_MSR52588.2021.00037.csv"))

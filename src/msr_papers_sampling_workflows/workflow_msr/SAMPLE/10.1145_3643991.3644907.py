@@ -33,10 +33,15 @@ def main():
                 use_PTM,
             )
         )
+        .add_metadata(Loader(url, is_public))
         .filter_operator("is_public")
+        .add_metadata(Loader(url, is_fork))
         .filter_operator("not is_fork")
+        .add_metadata(Loader(url, is_archived))
         .filter_operator("not is_archived")
+        .add_metadata(Loader(url, stars))
         .filter_operator("stars >= 5")
+        .add_metadata(Loader(url, use_PTM))
         .filter_operator("use_PTM")
         
     )

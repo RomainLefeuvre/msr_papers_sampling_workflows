@@ -37,8 +37,10 @@ workflow = (
     # start from github dataset
     .input(Loader(url, language, forks, merged_pull_requests))
     # filter projects using one of the specified languages
+    .add_metadata(Loader(url, language))
     .filter_operator(f"language in {LANGS!r}")
     # systematic selection: top 100 most forked (descending)
+    .add_metadata(Loader(url, forks))
     .systematic_selection_operator(cardinality=100, metadata_name="forks", reverse=True)
     # purposive sampling
     .manual_sampling_operator()
@@ -46,7 +48,9 @@ workflow = (
     .grouping_operator(
         *[
             WorkflowBuilder()
+            .add_metadata(Loader(url, language))
             .filter_operator(f"language == '{lang}'")
+            .add_metadata(Loader(url, merged_pull_requests))
             .systematic_selection_operator(
                 cardinality=10, metadata_name="mergedPullRequests", reverse=True
             )

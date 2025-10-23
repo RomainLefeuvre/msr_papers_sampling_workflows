@@ -20,7 +20,9 @@ def main():
     workflow = (
         WorkflowBuilder()
         .input(JsonLoader(input_path, url))
+        .add_metadata(Loader(url, is_code_available_on_github))
         .filter_operator("is_code_available_on_github")
+        .add_metadata(Loader(url, nb_downloads))
         .filter_operator("nb_downloads >= 1000")
         .output(CsvWriter("out.csv"))
     )

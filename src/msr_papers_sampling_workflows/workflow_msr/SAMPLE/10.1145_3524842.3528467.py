@@ -14,9 +14,11 @@ def dataset1():
         WorkflowBuilder()
         .input(Loader(url, language, creation_date))
         # Filter Python projects
+        .add_metadata(Loader(url, language))
         .filter_operator("language == 'Python'")
-        # Filter projects created before March 20, 2019
-        .filter_operator("creation_date < date(2019, 3, 20)")
+        # Filter projects created after March 20, 2019
+        .add_metadata(Loader(url, creation_date))
+        .filter_operator("creation_date > date(2019, 3, 20)")
     )
 
 
@@ -25,7 +27,9 @@ def dataset2():
         WorkflowBuilder()
         .input(Loader(url, language, creation_date))
         # Filter Python projects
+        .add_metadata(Loader(url, language))
         .filter_operator("language == 'Python'")
-        # Filter projects created before March 11, 2021
-        .filter_operator("creation_date < date(2021, 3, 11)")
+        # Filter projects created after March 11, 2021
+        .add_metadata(Loader(url, creation_date))
+        .filter_operator("creation_date > date(2021, 3, 11)")
     )

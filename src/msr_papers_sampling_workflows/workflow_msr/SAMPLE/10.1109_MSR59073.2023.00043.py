@@ -56,6 +56,7 @@ workflow = (
     .systematic_selection_operator(3000, "stars", reverse=True)
     .add_metadata(Loader(url, has_travis_ci))
     .filter_operator("not has_travis_ci")
+    .add_metadata(Loader(url, has_activity))
     .filter_operator("has_activity")
     .add_metadata(Loader(url, is_toy, has_test))
     .filter_operator("not is_toy and has_test")

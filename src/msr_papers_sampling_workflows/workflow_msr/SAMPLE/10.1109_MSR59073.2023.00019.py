@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from sampling_mining_workflows_dsl.element.writer.CsvWriter import CsvWriter
-from sampling_mining_workflows_dsl.element.loader import JsonLoader
+from sampling_mining_workflows_dsl.element.Loader import Loader
 from sampling_mining_workflows_dsl.metadata.Metadata import Metadata
 from sampling_mining_workflows_dsl.WorkflowBuilder import WorkflowBuilder
 
@@ -31,8 +31,10 @@ def main():
     # Workflow Declaration and Execution
     automl_fw_extraction = (
         WorkflowBuilder()
-        .input(JsonLoader(input_path, url, topic, stars))
+        .input(Loader(input_path, url, topic, stars))
+        .add_metadata(topic)
         .filter_operator("topic == 'automl'")
+        .add_metadata(stars)
         .systematic_selection_operator(10, stars, 1)
         .manual_sampling_operator()
         .output(CsvWriter("out.csv"))
@@ -45,8 +47,10 @@ def main():
 
     downstream_repos_workflow = (
         WorkflowBuilder()
-        .input(JsonLoader(input_path, url, imported_frameworks, is_fork))
+        .input(Loader(input_path, url, imported_frameworks, is_fork))
+        .add_metadata(Loader(url, imported_frameworks, extracted_frameworks))
         .filter_operator("bool(set(imported_frameworks) & set(extracted_frameworks))")
+        .add_metadata(Loader(url, is_fork))
         .filter_operator("not is_fork")
         .output(CsvWriter("downstream_repos.csv"))
     )

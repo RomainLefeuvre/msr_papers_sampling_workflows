@@ -37,6 +37,7 @@ def main():
                 number_of_commit_still_available_on_github,
             )
         )
+        .add_metadata(Loader(url, number_of_commit_after_march_2015, number_of_commit_still_available_on_github))
         .filter_operator(
             "number_of_commit_still_available_on_github + number_of_commit_after_march_2015 > ???? "
         )

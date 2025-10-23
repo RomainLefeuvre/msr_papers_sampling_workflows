@@ -26,4 +26,4 @@ def main():
             .union_with_external_set_operator(JsonLoader(study_3_path, url))\
             .union_with_external_set_operator(JsonLoader(study_4_path, url))\
             .union_with_external_set_operator(JsonLoader(study_5_path, url))\
-            .output(CsvWriter(f"result.csv"))\
+            .output(CsvWriter(f"result.csv"))
