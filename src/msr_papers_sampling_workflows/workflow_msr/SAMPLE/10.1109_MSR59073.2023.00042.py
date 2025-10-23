@@ -83,7 +83,7 @@ def main():
         # Filter project non-fork
         .filter_operator("is_fork == False")
         # Filter project with more than X stars
-        .filter_operator("stars >= 1") 
+        .filter_operator("stars >= x") 
         # Filter project with a commit before June 1, 2019
         .filter_operator(
             "commits_metadata.get_first_commit_date() < date_to_epoch_day(2019, 6, 1)"
