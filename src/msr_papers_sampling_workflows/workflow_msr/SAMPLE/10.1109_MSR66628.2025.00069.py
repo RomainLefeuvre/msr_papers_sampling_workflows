@@ -30,8 +30,9 @@ def main():
     workflow = (
         WorkflowBuilder()
         .input(
-            Loader(input_path, url, downloads_nb, scripts_nb, stars_nb, commits_nb)
+            Loader(input_path, url, scripts_nb, stars_nb, commits_nb)
         )
+        .add_metadata(downloads_nb)
         .systematic_selection_operator(
             cardinality, downloads_nb, 1
         )  # Sort by downloads
@@ -44,7 +45,29 @@ def main():
     )
 
     workflow.execute_workflow()
+    # 1. start from github
+    # 2. Sort repos by number of downloads
+    # 3. select top 20
+    # 4. filter repo with at least 100 commits 
+    # 5. select randomly 8 repo
+    # 6. Manual sampling 
+    
 
+    workflow = (
+        WorkflowBuilder()
+        .input(
+            Loader("Github", url, commits_nb)
+        )
+        .add_metadata(downloads_nb)
+        .systematic_selection_operator(
+            20, downloads_nb, 1
+        )  # Sort by downloads
+        .filter_operator("commits = 100") 
+        .manual_sampling_operator()  
+        
+        .output(CsvWriter("out2.csv"))
+    )
 
+    workflow2
 if __name__ == "__main__":
     main()
