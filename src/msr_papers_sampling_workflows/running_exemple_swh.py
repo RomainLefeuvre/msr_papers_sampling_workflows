@@ -41,5 +41,7 @@ workflow = WorkflowBuilder()\
     .print()
     
 #WorkflowVisualizer(workflow).generate_graph()
-#HistWorkflowAnalysis(metadata=swh_commit_count,top_x=-1,category=False,sort=True,output_path="./out").analyze(workflow)
+HistWorkflowAnalysis(metadata=swh_commit_count,top_x=-1,category=False,sort=True,output_path="./out_truncated",log_y=True,max_x_bound=3000000,fixed_bins=20).analyze(workflow)
+HistWorkflowAnalysis(metadata=swh_commit_count,top_x=-1,category=False,sort=True,output_path="./out_without_limit",log_y=True,max_x_bound=3000000,fixed_bins=20).analyze(workflow)
+
 
