@@ -18,7 +18,25 @@ def main():
                 url,
             )
         )
-        .output(CsvWriter("out.csv"))
+        .output(CsvWriter("out_1.csv"))
     )
 
     workflow.execute_workflow()
+
+    # ---- Metadata ----
+    url = Metadata.of_string("id")
+    workflow = (
+        WorkflowBuilder()
+        .input(
+            JsonLoader(
+                Path("CodeSearch-Net_Java_Dataset"),
+                url,
+            )
+        )
+        .output(CsvWriter("out_2.csv"))
+    )
+
+    workflow.execute_workflow()
+
+
+
