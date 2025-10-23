@@ -15,7 +15,7 @@ def dataset1():
         .input(Loader(url, language, creation_date))
         # Filter Python projects
         .filter_operator("language == 'Python'")
-        # Filter projects created after March 20, 2019
+        # Filter projects created before March 20, 2019
         .filter_operator("creation_date < date(2019, 3, 20)")
     )
 
@@ -26,6 +26,6 @@ def dataset2():
         .input(Loader(url, language, creation_date))
         # Filter Python projects
         .filter_operator("language == 'Python'")
-        # Filter projects created after March 11, 2021
+        # Filter projects created before March 11, 2021
         .filter_operator("creation_date < date(2021, 3, 11)")
     )
