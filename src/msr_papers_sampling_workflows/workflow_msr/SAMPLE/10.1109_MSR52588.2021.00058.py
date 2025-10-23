@@ -18,6 +18,7 @@ from sampling_mining_workflows_dsl.WorkflowBuilder import WorkflowBuilder
 # * filter project having readme
 # * add metadata documentation_in_readme
 # * filter documentation_in_readme
+# * filter out project without java file
 
 # ---- Metadata ----
 url = Metadata.of_string("id")
@@ -27,6 +28,7 @@ available_on_github = Metadata.of_boolean("available_on_github")
 engineered_project = Metadata.of_boolean("engineered_project")
 have_readme = Metadata.of_boolean("have_readme")
 documentation_in_readme = Metadata.of_boolean("documentation_in_readme")
+contain_java_file = Metadata.of_boolean("containJavaFile")
 
 
 def main():
@@ -42,6 +44,7 @@ def main():
                 engineered_project,
                 have_readme,
                 documentation_in_readme,
+                contain_java_file,
             )
         )
         # Filter Java projects
@@ -60,6 +63,9 @@ def main():
         # Add & filter: documentation must be in README
         .add_metadata(documentation_in_readme)
         .filter_operator("documentation_in_readme")
+        # filter out project without java file
+        .add_metadata(contain_java_file)
+        .filter_operator("contain_java_file")
         # Final output
         .output(CsvWriter("github_java_engineered.csv"))
     )
