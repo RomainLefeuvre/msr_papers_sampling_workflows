@@ -60,7 +60,9 @@ ignore = [
 ]
 
 [tool.uv.sources]
-sampling-mining-workflows-dsl = { path = "../final_version/PythonWorkflowDSL",editable = true }
+sampling-mining-workflows-dsl = { git = "https://github.com/RomainLefeuvre/SamplingMiningWorflowDSL.git" }
+
+
 
 
 
