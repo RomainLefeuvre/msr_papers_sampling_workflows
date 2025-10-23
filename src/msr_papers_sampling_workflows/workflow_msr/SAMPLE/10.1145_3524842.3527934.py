@@ -29,7 +29,33 @@ def main():
     (
         WorkflowBuilder()
         .input(
-            Loader(
+            Loader("Github",
+                url,
+                pull_requests,
+                commits,
+                weeks_of_activity,
+                issues,
+                contributors,
+                defective_commits,
+                is_fork,
+            )
+        )
+        .filter_operator("pullRequests > 0")
+        .filter_operator("commits > 20")
+        .filter_operator("weeksOfActivity >= 50")
+        .filter_operator("issues > 10")
+        .filter_operator("contributors >= 10")
+        .filter_operator("defective_commits >= 10")
+        .filter_operator("not isFork ")
+        .output(CsvWriter("github_filtered.csv"))
+    )
+
+
+    # --- Workflow ---
+    (
+        WorkflowBuilder()
+        .input(
+            Loader("Xia et al.",
                 url,
                 pull_requests,
                 commits,
