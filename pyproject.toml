@@ -8,10 +8,7 @@ version = "0.2.0"
 description = ""
 readme = "README.md"
 requires-python = ">=3.13"
-authors = [
-    { name = "Romain Lefeuvre", email = "romain.lefeuvre@inria.fr"},
-    { name = "Maiwenn Le Gouaster", email = "maiwenn.le-goasteller@irisa.fr"}
-]
+
 dependencies = [
     "sampling-mining-workflows-dsl",
     "requests>=2.32.5",
