@@ -37,11 +37,11 @@ workflow = WorkflowBuilder()\
         ),
     )\
     .union_operator()\
-    .output(JsonWriter("sampled_repos.json"))\
+    .output(JsonWriter("result/sampled_repos.json"))\
     .execute_workflow()\
     .print()
     
-WorkflowVisualizer(workflow,"analysis/workflow_visualization").generate_graph()
-HistWorkflowAnalysis(metadata=swh_commit_count,top_x=-1,category=False,sort=True,output_path="./analysis/hist/out_truncated",log_y=True,max_x_bound=3000000,fixed_bins=20).analyze(workflow)
-HistWorkflowAnalysis(metadata=swh_commit_count,top_x=-1,category=False,sort=True,output_path="./analysis/hist/out_without_limit",log_y=True,fixed_bins=20).analyze(workflow)
-KSWorkflowAnalysis(metadata=swh_commit_count,output_path="analysis").analyze(workflow)
+WorkflowVisualizer(workflow,"result/workflow_visualization").generate_graph()
+HistWorkflowAnalysis(metadata=swh_commit_count,top_x=-1,category=False,sort=True,output_path="result/hist/out_truncated",log_y=True,max_x_bound=3000000,fixed_bins=20).analyze(workflow)
+HistWorkflowAnalysis(metadata=swh_commit_count,top_x=-1,category=False,sort=True,output_path="result/hist/out_without_limit",log_y=True,fixed_bins=20).analyze(workflow)
+KSWorkflowAnalysis(metadata=swh_commit_count,output_path="result").analyze(workflow)

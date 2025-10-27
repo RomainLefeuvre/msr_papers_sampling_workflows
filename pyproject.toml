@@ -17,8 +17,11 @@ dependencies = [
 [tool.hatch.metadata]
 allow-direct-references = true
 
+
 dependencies = [
-    "python-dateutil>=2.9.0"]
+    "python-dateutil>=2.9.0",
+    "sampling_mining_workflows_dsl@git+https://github.com/RomainLefeuvre/SamplingMiningWorflowDSL"]
+
 
 
 [tool.hatch.build.targets.wheel]
@@ -58,6 +61,11 @@ ignore = [
 
 [tool.uv.sources]
 sampling-mining-workflows-dsl = { git = "https://github.com/RomainLefeuvre/SamplingMiningWorflowDSL.git" }
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.0.1",
+]
 
 
 
