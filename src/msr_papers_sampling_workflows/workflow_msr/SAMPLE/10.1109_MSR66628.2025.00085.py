@@ -30,7 +30,6 @@ def main():
         .input(JsonLoader(input_path, url, topic))
         .add_metadata(Loader(url, topic))
         .filter_operator("topic.contains('VST')")
-        # Add a filter/operator to remove duplicates ?
         .manual_sampling_operator()
         .output(CsvWriter("out.csv"))
     )
