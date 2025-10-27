@@ -8,7 +8,7 @@ from sampling_mining_workflows_dsl.WorkflowBuilder import WorkflowBuilder
 # For y corpus : 
 # * Start from existing dataset
 # * add test_coverage metadata
-# * Filter for repos with > 88% test coverage
+# * Filter for repos with > 80% test coverage
 # * add is_buildable metadadata
 # * add construct_dynamic_cg 
 # * add construct_static_cg
@@ -47,8 +47,8 @@ def main():
         )
         # Add test_coverage metadata
         .add_metadata(Loader(test_coverage))
-        # Filter for repos with > 88% test coverage
-        .filter_operator("test_coverage > 0.88")
+        # Filter for repos with > 80% test coverage
+        .filter_operator("test_coverage > 0.80")
         # Add is_buildable metadata
         .add_metadata(Loader(is_buildable))
         # Add construct_dynamic_cg metadata
