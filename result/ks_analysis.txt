@@ -269,4 +269,4 @@ Failing pairs (significant difference detected):
 • Set #4FilterOperator vs Set #6UnionOperator (p-value: 0.0)
 • Set #5RandomSelectionOperator vs Set #6UnionOperator (p-value: 0.0)
 
-Analysis completed at: 2025-10-29 12:59:16
+Analysis completed at: 2025-10-30 13:52:32
